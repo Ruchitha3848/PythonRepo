@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  
+<title>employee details</title>
+
+</head>
+<script>
+    function entry(){
+        document.forms['result'].action="entry.html";
+    }
+</script>
+<body>
+    <h1 style="text-align:center;">Employee Details</h1>
+
+    <div style="text-align:center;" >
+    <img  src="/static/employee.webp" alt="employee_image" width="200px" height="200px"  ></div>
+    <div style="text-align:center;">
+    
+        <form action="/entry" method="post">
+            <input type="submit" value="Add employee">
+        </form>
+    </br>
+        <form action="/details" method="post">
+            <input type="submit" value="Get Employee Details">
+        </form>
+  
+    </div>
+</body>
+</html>
