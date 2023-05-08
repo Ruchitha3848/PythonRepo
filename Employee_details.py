@@ -1,5 +1,7 @@
 import mysql.connector
-from flask import Flask,request,render_template
+from flask import Flask,request,render_template,flash,redirect
+from tkinter import messagebox
+
 
 app=Flask(__name__)
 
@@ -18,11 +20,6 @@ def details():
 @app.route("/submit",methods=['POST'])
 def submit():
     if request.method=='POST':
-        name=request.form['ename']
-        id=request.form['eid']
-        role=request.form['erole']
-        salary=request.form['esalary']
-       
         connect=mysql.connector.connect(
         host='localhost',
         user='root',
@@ -30,14 +27,30 @@ def submit():
         database='clarivate')
 
         mycursor=connect.cursor()
-        sql_1="insert into employee_details(EMP_ID,EMP_NAME,EMP_ROLE ,EMP_SALARY) values(%s,%s,%s,%s)"
-        val=(id,name,role,salary)
-        mycursor.execute(sql_1,val)
-        connect.commit()
-        connect.close()  
-    return render_template('sucess.html')
-
-    
+        id=request.form['eid']
+        name=request.form['ename']
+        gender=request.form['egender']
+        role=request.form['erole']
+        location=request.form['elocation']
+        salary=request.form['esalary']
+        sql_2="select * from employees where emp_id={0}".format(id)
+        mycursor.execute(sql_2)
+        result=mycursor.fetchall()
+        
+        mycursor2=connect.cursor()
+        sql_1="insert  into employees(EMP_ID,EMP_NAME,emp_gender,EMP_ROLE,emp_location ,EMP_SALARY) values(%s,%s,%s,%s,%s,%s)"
+        val=(id,name,gender,role,location,salary)
+        if (len(result)):  
+            return render_template("sucess.html",message="Employee Exist!")
+        else:
+            mycursor2.execute(sql_1,val)
+            connect.commit()
+            connect.close() 
+            return render_template("sucess.html",message="successful!")
+            
+    connect.commit()
+    connect.close()  
+       
 @app.route("/get",methods=['POST']) 
 def get_details():
     if request.method=='POST':
@@ -49,13 +62,13 @@ def get_details():
         database='clarivate')
         
         mycursor=connect.cursor()
-        sql_2="select * from employee_details where emp_id={0}".format(id)
+        sql_2="select * from employees where emp_id={0}".format(id)
         mycursor.execute(sql_2)
         result=mycursor.fetchall()  
         connect.commit()
         connect.close() 
     if (len(result)):  
-        return render_template("display_details.html",id=result[0][0],name=result[0][1],role=result[0][2],sal=result[0][3])
+        return render_template("display_details.html",id=result[0][0],name=result[0][1],gender=result[0][2],role=result[0][3],location=result[0][4],salary=result[0][5])
     else:
         return render_template("no records.html")
     

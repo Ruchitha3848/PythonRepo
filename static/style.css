@@ -1,0 +1,11 @@
+div.form{
+    background-color: hotpink;
+    width:20cm;
+    padding:10px 20px;
+    border-radius: 10px;
+}
+
+label{
+    width:140px;
+    display: inline-block;
+}

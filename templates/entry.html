@@ -3,28 +3,85 @@
 <head>
   
 <title>employee details</title>
-
+<link rel="stylesheet" href="static/style.css">
+<style>
+  table{
+    padding:0 35%;
+  }
+</style>
 </head>
-<body>
+<body style="background:pink" >
+ 
     <h1 style="text-align:center;">Enter employee Details</h1>
 
     <div style="text-align:center;" >
-    <img  src="/static/emp.jpg" alt="employee_image" width="200px" height="200px"  >
-    <form action="/submit" method='post' >
-
+    <img  src="/static/emp.jpg" alt="employee_image" width="150px" height="150px"  >
+    <form action="/submit" style="text-align:center; " method='post' >
+      <div style="text-align:center;">
+<table  >
+  <tr>
+    <td>
         <label for="eid">Employee id:</label>
-        <input type="text" id="eid" name="eid" ><br><br>
+    </td>
+          <td>
+        <input type="text" id="eid" name="eid" ><br>
+          </td>
+          <tr>
+            <td>
+        <label for="ename">Employee name:</label></td>
+        <td>
+        <input type="text" id="ename" name="ename" ><br></td></tr>
 
-        <label for="ename">Employee name:</label>
-        <input type="text" id="ename" name="ename" ><br><br>
+        <tr>
+        <td>
+        <label for="egender">Employee gender:</label>
+        </td>
+        <td>
+        <select name="egender">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+        </td>
+          
+           <td>
+           </tr>
+           <tr>
+            <td>
+        <label for="erole">Employee role:</label></td>
+        <td>
+        
+        
+        <select name="erole">
+            <option value="developer">Developer</option>
+            <option value="tester">Tester</option>
+            <option value="architect">Architect</option>
+            <option value="manager">Manager</option>
+            <option value="assistant-manager">Assistant Manager</option>
+          </select></td></tr>
+        <tr>
+          <td>
 
-        <label for="erole">Employee role:</label>
-        <input type="text" id="erole" name="erole" ><br><br>
+        <label for="elocation">Employee location:</label></td>
+        <td>
+        <select name="elocation">
+            <option value="banglore">Banglore</option>
+            <option value="chennai">Chennai</option>
+            <option value="hyderbad">Hyderbad</option>
+            <option value="pune">Pune</option>
+          
+          </select></td></tr>
+        <td>
 
-        <label for="esalary">Employee salary:</label>
-        <input type="text" id="esalary" name="esalary" ><br><br>
 
-        <input type="submit" value="Submit">
+        <label for="esalary">Employee salary:</label></td>
+        <td>
+        <input type="text" id="esalary" name="esalary" ><br>
+        </td></tr>
+        </table>
+      </div>
+        <center>
+        <input style="color:white;background-color:blue;" type="submit" value="Submit">
+        </center>
     </div>
       </form> 
       
