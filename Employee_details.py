@@ -41,12 +41,12 @@ def submit():
         sql_1="insert  into employees(EMP_ID,EMP_NAME,emp_gender,EMP_ROLE,emp_location ,EMP_SALARY) values(%s,%s,%s,%s,%s,%s)"
         val=(id,name,gender,role,location,salary)
         if (len(result)):  
-            return render_template("sucess.html",message="Employee Exist!")
+            return render_template("sucess.html",message="Employee already Exist!")
         else:
             mycursor2.execute(sql_1,val)
             connect.commit()
             connect.close() 
-            return render_template("sucess.html",message="successful!")
+            return render_template("sucess.html",message="Successfully submitted!")
             
     connect.commit()
     connect.close()  
