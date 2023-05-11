@@ -3,9 +3,14 @@
 <head>
 <title>records</title>
 </head>
-<body>
-
-   <h2 style="color:red">No Records Found....! Please check Employee ID.</h2> 
-
-</body>
+<body onload="popup()">
+   <script>
+     function popup() {
+       alert("No Records Found!");
+       window.location.assign("http://127.0.0.1:5000/details")
+     }
+    
+   </script>
+   
+ </body>
 </html>
